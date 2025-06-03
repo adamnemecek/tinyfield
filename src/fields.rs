@@ -1,5 +1,7 @@
-use crate::prime_field::{PrimeField, PrimeFieldElt};
-use crate::prime_power_field::PrimePowerField;
+use crate::{
+    prime_field::{PrimeField, PrimeFieldElt},
+    prime_power_field::PrimePowerField,
+};
 
 #[derive(Clone, Copy, Debug)]
 pub struct GF2 {}

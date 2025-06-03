@@ -1,8 +1,4 @@
-use core::cmp;
-use core::convert;
-use core::fmt;
-use core::marker;
-use core::ops;
+use core::{cmp, convert, fmt, marker, ops};
 
 /// A representation of a field with prime order.
 ///
