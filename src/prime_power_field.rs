@@ -1,17 +1,16 @@
-use core::ops;
+use crate::prime_field::{PrimeField, PrimeFieldElt};
 use core::cmp;
-use core::marker;
 use core::convert::TryInto;
 use core::fmt;
-use crate::prime_field::{PrimeField, PrimeFieldElt};
+use core::marker;
+use core::ops;
 
-
-pub struct PrimePowerFieldElementGenerator<F : PrimePowerField> {
-    next : [PrimeFieldElt<F::FieldOfIntegers> ; 4],
-    start: bool
+pub struct PrimePowerFieldElementGenerator<F: PrimePowerField> {
+    next: [PrimeFieldElt<F::FieldOfIntegers>; 4],
+    start: bool,
 }
 
-impl<F : PrimePowerField> Iterator for PrimePowerFieldElementGenerator<F> {
+impl<F: PrimePowerField> Iterator for PrimePowerFieldElementGenerator<F> {
     type Item = PrimePowerFieldElt<F>;
 
     fn next(&mut self) -> Option<PrimePowerFieldElt<F>> {
@@ -20,60 +19,63 @@ impl<F : PrimePowerField> Iterator for PrimePowerFieldElementGenerator<F> {
         }
         self.start = false;
         let to_ret = self.next;
-        for i in 0..F::DEGREE-1 {
+        for i in 0..F::DEGREE - 1 {
             self.next[i] = self.next[i] + F::FieldOfIntegers::one;
             if self.next[i] != F::FieldOfIntegers::zero {
-                break
+                break;
             }
         }
         Some(PrimePowerFieldElt {
             val: to_ret,
-            phantom: marker::PhantomData
+            phantom: marker::PhantomData,
         })
     }
 }
 
-pub trait PrimePowerField : marker::Sized + core::fmt::Debug + marker::Copy {
-    type FieldOfIntegers : PrimeField;
-    const IRRED_POLY : [PrimeFieldElt<Self::FieldOfIntegers>; 4];
-    const DEGREE : usize;
+pub trait PrimePowerField: marker::Sized + core::fmt::Debug + marker::Copy {
+    type FieldOfIntegers: PrimeField;
+    const IRRED_POLY: [PrimeFieldElt<Self::FieldOfIntegers>; 4];
+    const DEGREE: usize;
 
-    const zero : PrimePowerFieldElt<Self> =
-        PrimePowerFieldElt {
-            val : [Self::FieldOfIntegers::zero ; 4],
-            phantom : marker::PhantomData,
-        };
+    const zero: PrimePowerFieldElt<Self> = PrimePowerFieldElt {
+        val: [Self::FieldOfIntegers::zero; 4],
+        phantom: marker::PhantomData,
+    };
 
-    const one : PrimePowerFieldElt<Self> =
-        PrimePowerFieldElt {
-            val : [Self::FieldOfIntegers::one,
-                   Self::FieldOfIntegers::zero,
-                   Self::FieldOfIntegers::zero,
-                   Self::FieldOfIntegers::zero],
-            phantom : marker::PhantomData,
-        };
+    const one: PrimePowerFieldElt<Self> = PrimePowerFieldElt {
+        val: [
+            Self::FieldOfIntegers::one,
+            Self::FieldOfIntegers::zero,
+            Self::FieldOfIntegers::zero,
+            Self::FieldOfIntegers::zero,
+        ],
+        phantom: marker::PhantomData,
+    };
 
     fn elts() -> PrimePowerFieldElementGenerator<Self> {
         PrimePowerFieldElementGenerator {
-            next: [Self::FieldOfIntegers::zero ; 4],
+            next: [Self::FieldOfIntegers::zero; 4],
             start: true,
         }
     }
 }
 
-
 #[derive(Clone, Copy)]
-pub struct PrimePowerFieldElt<F : PrimePowerField> {
+pub struct PrimePowerFieldElt<F: PrimePowerField> {
     val: [PrimeFieldElt<F::FieldOfIntegers>; 4],
     phantom: marker::PhantomData<F>,
 }
 
 impl<F: PrimePowerField> From<u8> for PrimePowerFieldElt<F> {
-    fn from(x : u8) -> PrimePowerFieldElt<F> {
+    fn from(x: u8) -> PrimePowerFieldElt<F> {
         PrimePowerFieldElt {
-            val : [ PrimeFieldElt::from(x)
-            , F::FieldOfIntegers::zero, F::FieldOfIntegers::zero, F::FieldOfIntegers::zero],
-            phantom: marker::PhantomData
+            val: [
+                PrimeFieldElt::from(x),
+                F::FieldOfIntegers::zero,
+                F::FieldOfIntegers::zero,
+                F::FieldOfIntegers::zero,
+            ],
+            phantom: marker::PhantomData,
         }
     }
 }
@@ -83,10 +85,12 @@ impl<F: PrimePowerField> ops::Add for PrimePowerFieldElt<F> {
 
     fn add(self, rhs: PrimePowerFieldElt<F>) -> PrimePowerFieldElt<F> {
         PrimePowerFieldElt {
-            val: [self.val[0] + rhs.val[0],
-                  self.val[1] + rhs.val[1],
-                  self.val[2] + rhs.val[2],
-                  self.val[3] + rhs.val[3]],
+            val: [
+                self.val[0] + rhs.val[0],
+                self.val[1] + rhs.val[1],
+                self.val[2] + rhs.val[2],
+                self.val[3] + rhs.val[3],
+            ],
             phantom: marker::PhantomData,
         }
     }
@@ -97,10 +101,7 @@ impl<F: PrimePowerField> ops::Neg for PrimePowerFieldElt<F> {
 
     fn neg(self) -> PrimePowerFieldElt<F> {
         PrimePowerFieldElt {
-            val: [-self.val[0],
-                  -self.val[1],
-                  -self.val[2],
-                  -self.val[3]],
+            val: [-self.val[0], -self.val[1], -self.val[2], -self.val[3]],
             phantom: marker::PhantomData,
         }
     }
@@ -109,7 +110,7 @@ impl<F: PrimePowerField> ops::Neg for PrimePowerFieldElt<F> {
 impl<F: PrimePowerField> ops::Sub for PrimePowerFieldElt<F> {
     type Output = PrimePowerFieldElt<F>;
 
-    fn sub(self, rhs : PrimePowerFieldElt<F>) -> PrimePowerFieldElt<F> {
+    fn sub(self, rhs: PrimePowerFieldElt<F>) -> PrimePowerFieldElt<F> {
         self + (-rhs)
     }
 }
@@ -132,10 +133,10 @@ impl<F: PrimePowerField> ops::Mul for &PrimePowerFieldElt<F> {
                 prod_poly[i + j] = prod_poly[i + j] + self.val[i] * rhs.val[j]
             }
         }
-        for i in (F::DEGREE-1..8).rev() {
+        for i in (F::DEGREE - 1..8).rev() {
             let c = prod_poly[i];
             for j in 0..F::DEGREE {
-                prod_poly[i - j] = prod_poly[i - j] - c * F::IRRED_POLY[F::DEGREE-j-1];
+                prod_poly[i - j] = prod_poly[i - j] - c * F::IRRED_POLY[F::DEGREE - j - 1];
             }
         }
         for i in 4..8 {
@@ -154,7 +155,10 @@ impl<F: PrimePowerField> ops::Div for PrimePowerFieldElt<F> {
     fn div(self, rhs: PrimePowerFieldElt<F>) -> PrimePowerFieldElt<F> {
         assert_ne!(rhs, F::zero, "Division by zero");
         // TODO(robert) write this properly
-        self * F::elts().filter(|x| *x * rhs == F::one).next().expect("Could not find inverse")
+        self * F::elts()
+            .filter(|x| *x * rhs == F::one)
+            .next()
+            .expect("Could not find inverse")
     }
 }
 
@@ -169,7 +173,6 @@ impl<F: PrimePowerField> PrimePowerFieldElt<F> {
     }
 }
 
-
 impl<F: PrimePowerField> cmp::PartialEq for PrimePowerFieldElt<F> {
     fn eq(&self, other: &Self) -> bool {
         self.val == other.val
@@ -180,7 +183,10 @@ impl<F: PrimePowerField> cmp::Eq for PrimePowerFieldElt<F> {}
 
 impl<F: PrimePowerField> fmt::Debug for PrimePowerFieldElt<F> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.write_fmt(format_args!("({:?},{:?},{:?},{:?})", self.val[0], self.val[1], self.val[2], self.val[3]))
+        f.write_fmt(format_args!(
+            "({:?},{:?},{:?},{:?})",
+            self.val[0], self.val[1], self.val[2], self.val[3]
+        ))
     }
 }
 
@@ -206,14 +212,11 @@ mod tests {
             }
         }
         fn trace(x: PrimePowerFieldElt<GF4>) -> PrimePowerFieldElt<GF4> {
-            (1..3).fold(GF4::zero, |acc, i| acc + x.pow(u32::pow(2,i)))
+            (1..3).fold(GF4::zero, |acc, i| acc + x.pow(u32::pow(2, i)))
         }
         for x in GF4::elts() {
             assert_eq!(x, x.pow(4));
-            assert!(
-                (0..2)
-                .any(|i| PrimePowerFieldElt::from(i) == trace(x)),
-            );
+            assert!((0..2).any(|i| PrimePowerFieldElt::from(i) == trace(x)),);
         }
     }
 
@@ -234,14 +237,11 @@ mod tests {
             }
         }
         fn trace(x: PrimePowerFieldElt<GF9>) -> PrimePowerFieldElt<GF9> {
-            (1..3).fold(GF9::zero, |acc, i| acc + x.pow(u32::pow(3,i)))
+            (1..3).fold(GF9::zero, |acc, i| acc + x.pow(u32::pow(3, i)))
         }
         for x in GF9::elts() {
             assert_eq!(x, x.pow(9));
-            assert!(
-                (0..3)
-                .any(|i| PrimePowerFieldElt::from(i) == trace(x)),
-            );
+            assert!((0..3).any(|i| PrimePowerFieldElt::from(i) == trace(x)),);
         }
     }
 }

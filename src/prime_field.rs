@@ -1,8 +1,8 @@
 use core::cmp;
-use core::fmt;
-use core::ops;
-use core::marker;
 use core::convert;
+use core::fmt;
+use core::marker;
+use core::ops;
 
 /// A representation of a field with prime order.
 ///
@@ -19,7 +19,7 @@ pub trait PrimeField: marker::Sized + core::fmt::Debug + marker::Copy {
     ///
     /// This is the only information required to uniquely determine this field.
     /// It is also the size of this field.
-    const CHARACTERISTIC : u8;
+    const CHARACTERISTIC: u8;
 
     /// A map of multiplicative inverses for this field.
     ///
@@ -27,31 +27,29 @@ pub trait PrimeField: marker::Sized + core::fmt::Debug + marker::Copy {
     const DIVISION_TABLE: [u8; 256];
 
     /// The zero element of the field.
-    const zero : PrimeFieldElt<Self> =
-        PrimeFieldElt {
-            val : 0,
-            phantom : marker::PhantomData,
-        };
+    const zero: PrimeFieldElt<Self> = PrimeFieldElt {
+        val: 0,
+        phantom: marker::PhantomData,
+    };
 
     /// The multiplicative unit of the field.
-    const one : PrimeFieldElt<Self> =
-        PrimeFieldElt {
-            val : 1,
-            phantom : marker::PhantomData,
-        };
+    const one: PrimeFieldElt<Self> = PrimeFieldElt {
+        val: 1,
+        phantom: marker::PhantomData,
+    };
 
     /// An iterator over the p elements of this field.
     ///
     // TODO(robert) Construct a specific `PrimeFieldIterator` or investigate
     //              implementing iter on GFp
-    fn elts() -> core::iter::Scan<ops::Range<u8>,
-                                 PrimeFieldElt<Self>,
-                                 fn(&mut PrimeFieldElt<Self>, u8) -> Option<PrimeFieldElt<Self>>
-                            > {
+    fn elts() -> core::iter::Scan<
+        ops::Range<u8>,
+        PrimeFieldElt<Self>,
+        fn(&mut PrimeFieldElt<Self>, u8) -> Option<PrimeFieldElt<Self>>,
+    > {
         (0..Self::CHARACTERISTIC).scan(Self::zero, |acc, _| Some(*acc + Self::one))
     }
 }
-
 
 /// An element of a prime field.
 ///
@@ -61,7 +59,7 @@ pub trait PrimeField: marker::Sized + core::fmt::Debug + marker::Copy {
 ///
 /// Represented internally as a single byte.
 #[derive(Clone, Copy)]
-pub struct PrimeFieldElt<F : PrimeField> {
+pub struct PrimeFieldElt<F: PrimeField> {
     val: u8,
     phantom: marker::PhantomData<F>,
 }
@@ -77,7 +75,7 @@ impl<F: PrimeField> ops::Add for PrimeFieldElt<F> {
 
     fn add(self, rhs: PrimeFieldElt<F>) -> PrimeFieldElt<F> {
         PrimeFieldElt {
-            val : (((self.val as u16) + (rhs.val as u16) ) % (F::CHARACTERISTIC as u16)) as u8,
+            val: (((self.val as u16) + (rhs.val as u16)) % (F::CHARACTERISTIC as u16)) as u8,
             phantom: marker::PhantomData,
         }
     }
@@ -88,7 +86,7 @@ impl<F: PrimeField> ops::Neg for PrimeFieldElt<F> {
 
     fn neg(self) -> PrimeFieldElt<F> {
         PrimeFieldElt {
-            val : (F::CHARACTERISTIC - self.val) % F::CHARACTERISTIC,
+            val: (F::CHARACTERISTIC - self.val) % F::CHARACTERISTIC,
             phantom: marker::PhantomData,
         }
     }
@@ -97,7 +95,7 @@ impl<F: PrimeField> ops::Neg for PrimeFieldElt<F> {
 impl<F: PrimeField> ops::Sub for PrimeFieldElt<F> {
     type Output = PrimeFieldElt<F>;
 
-    fn sub(self, rhs : PrimeFieldElt<F>) -> PrimeFieldElt<F> {
+    fn sub(self, rhs: PrimeFieldElt<F>) -> PrimeFieldElt<F> {
         self + (-rhs)
     }
 }
@@ -115,7 +113,7 @@ impl<F: PrimeField> ops::Mul for &PrimeFieldElt<F> {
 
     fn mul(self, rhs: &PrimeFieldElt<F>) -> PrimeFieldElt<F> {
         PrimeFieldElt {
-            val : (((self.val as u16) * (rhs.val as u16) ) % (F::CHARACTERISTIC as u16)) as u8,
+            val: (((self.val as u16) * (rhs.val as u16)) % (F::CHARACTERISTIC as u16)) as u8,
             phantom: marker::PhantomData,
         }
     }
@@ -127,12 +125,11 @@ impl<F: PrimeField> ops::Div for PrimeFieldElt<F> {
     fn div(self, rhs: PrimeFieldElt<F>) -> PrimeFieldElt<F> {
         assert_ne!(rhs, F::zero, "Division by zero");
         self * PrimeFieldElt {
-            val : F::DIVISION_TABLE[rhs.val as usize],
+            val: F::DIVISION_TABLE[rhs.val as usize],
             phantom: marker::PhantomData,
         }
     }
 }
-
 
 impl<F: PrimeField> PrimeFieldElt<F> {
     pub fn pow(self, rhs: u8) -> PrimeFieldElt<F> {
@@ -145,7 +142,6 @@ impl<F: PrimeField> PrimeFieldElt<F> {
     }
 }
 
-
 impl<F: PrimeField> cmp::PartialEq for PrimeFieldElt<F> {
     fn eq(&self, other: &Self) -> bool {
         self.val == other.val
@@ -155,16 +151,16 @@ impl<F: PrimeField> cmp::PartialEq for PrimeFieldElt<F> {
 impl<F: PrimeField> cmp::Eq for PrimeFieldElt<F> {}
 
 impl<F: PrimeField> convert::From<u8> for PrimeFieldElt<F> {
-    fn from(x : u8) -> PrimeFieldElt<F> {
+    fn from(x: u8) -> PrimeFieldElt<F> {
         PrimeFieldElt {
-            val : x % F::CHARACTERISTIC,
-            phantom: marker::PhantomData
+            val: x % F::CHARACTERISTIC,
+            phantom: marker::PhantomData,
         }
     }
 }
 
 impl<F: PrimeField> convert::From<PrimeFieldElt<F>> for u8 {
-    fn from(x : PrimeFieldElt<F>) -> u8 {
+    fn from(x: PrimeFieldElt<F>) -> u8 {
         x.val
     }
 }

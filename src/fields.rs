@@ -1,12 +1,10 @@
 use crate::prime_field::{PrimeField, PrimeFieldElt};
 use crate::prime_power_field::PrimePowerField;
 
-
-
 #[derive(Clone, Copy, Debug)]
 pub struct GF2 {}
 impl PrimeField for GF2 {
-    const CHARACTERISTIC : u8 = 2;
+    const CHARACTERISTIC: u8 = 2;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -29,8 +27,8 @@ impl PrimeField for GF2 {
 }
 #[cfg(test)]
 mod tests_002 {
-    use crate::GF2;
     use crate::prime_field::*;
+    use crate::GF2;
 
     #[test]
     fn gf002() {
@@ -46,7 +44,7 @@ mod tests_002 {
             for y in GF2::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF2::elts() {
@@ -60,7 +58,7 @@ mod tests_002 {
         for i in 0..2 {
             for j in 0..2 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF2>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF2>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -70,7 +68,7 @@ mod tests_002 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF3 {}
 impl PrimeField for GF3 {
-    const CHARACTERISTIC : u8 = 3;
+    const CHARACTERISTIC: u8 = 3;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    2,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -93,8 +91,8 @@ impl PrimeField for GF3 {
 }
 #[cfg(test)]
 mod tests_003 {
-    use crate::GF3;
     use crate::prime_field::*;
+    use crate::GF3;
 
     #[test]
     fn gf003() {
@@ -110,7 +108,7 @@ mod tests_003 {
             for y in GF3::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF3::elts() {
@@ -124,7 +122,7 @@ mod tests_003 {
         for i in 0..3 {
             for j in 0..3 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF3>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF3>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -134,7 +132,7 @@ mod tests_003 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF5 {}
 impl PrimeField for GF5 {
-    const CHARACTERISTIC : u8 = 5;
+    const CHARACTERISTIC: u8 = 5;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    3,    2,    4,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -157,8 +155,8 @@ impl PrimeField for GF5 {
 }
 #[cfg(test)]
 mod tests_005 {
-    use crate::GF5;
     use crate::prime_field::*;
+    use crate::GF5;
 
     #[test]
     fn gf005() {
@@ -174,7 +172,7 @@ mod tests_005 {
             for y in GF5::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF5::elts() {
@@ -188,7 +186,7 @@ mod tests_005 {
         for i in 0..5 {
             for j in 0..5 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF5>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF5>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -198,7 +196,7 @@ mod tests_005 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF7 {}
 impl PrimeField for GF7 {
-    const CHARACTERISTIC : u8 = 7;
+    const CHARACTERISTIC: u8 = 7;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    4,    5,    2,    3,    6,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -221,8 +219,8 @@ impl PrimeField for GF7 {
 }
 #[cfg(test)]
 mod tests_007 {
-    use crate::GF7;
     use crate::prime_field::*;
+    use crate::GF7;
 
     #[test]
     fn gf007() {
@@ -238,7 +236,7 @@ mod tests_007 {
             for y in GF7::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF7::elts() {
@@ -252,7 +250,7 @@ mod tests_007 {
         for i in 0..7 {
             for j in 0..7 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF7>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF7>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -262,7 +260,7 @@ mod tests_007 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF11 {}
 impl PrimeField for GF11 {
-    const CHARACTERISTIC : u8 = 11;
+    const CHARACTERISTIC: u8 = 11;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    6,    4,    3,    9,    2,    8,    7,    5,   10,    0,    0,    0,    0,    0,
@@ -285,8 +283,8 @@ impl PrimeField for GF11 {
 }
 #[cfg(test)]
 mod tests_011 {
-    use crate::GF11;
     use crate::prime_field::*;
+    use crate::GF11;
 
     #[test]
     fn gf011() {
@@ -302,7 +300,7 @@ mod tests_011 {
             for y in GF11::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF11::elts() {
@@ -316,7 +314,7 @@ mod tests_011 {
         for i in 0..11 {
             for j in 0..11 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF11>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF11>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -326,7 +324,7 @@ mod tests_011 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF13 {}
 impl PrimeField for GF13 {
-    const CHARACTERISTIC : u8 = 13;
+    const CHARACTERISTIC: u8 = 13;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    7,    9,   10,    8,   11,    2,    5,    3,    4,    6,   12,    0,    0,    0,
@@ -349,8 +347,8 @@ impl PrimeField for GF13 {
 }
 #[cfg(test)]
 mod tests_013 {
-    use crate::GF13;
     use crate::prime_field::*;
+    use crate::GF13;
 
     #[test]
     fn gf013() {
@@ -366,7 +364,7 @@ mod tests_013 {
             for y in GF13::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF13::elts() {
@@ -380,7 +378,7 @@ mod tests_013 {
         for i in 0..13 {
             for j in 0..13 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF13>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF13>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -390,7 +388,7 @@ mod tests_013 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF17 {}
 impl PrimeField for GF17 {
-    const CHARACTERISTIC : u8 = 17;
+    const CHARACTERISTIC: u8 = 17;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    9,    6,   13,    7,    3,    5,   15,    2,   12,   14,   10,    4,   11,    8,
@@ -413,8 +411,8 @@ impl PrimeField for GF17 {
 }
 #[cfg(test)]
 mod tests_017 {
-    use crate::GF17;
     use crate::prime_field::*;
+    use crate::GF17;
 
     #[test]
     fn gf017() {
@@ -430,7 +428,7 @@ mod tests_017 {
             for y in GF17::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF17::elts() {
@@ -444,7 +442,7 @@ mod tests_017 {
         for i in 0..17 {
             for j in 0..17 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF17>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF17>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -454,7 +452,7 @@ mod tests_017 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF19 {}
 impl PrimeField for GF19 {
-    const CHARACTERISTIC : u8 = 19;
+    const CHARACTERISTIC: u8 = 19;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   10,   13,    5,    4,   16,   11,   12,   17,    2,    7,    8,    3,   15,   14,
@@ -477,8 +475,8 @@ impl PrimeField for GF19 {
 }
 #[cfg(test)]
 mod tests_019 {
-    use crate::GF19;
     use crate::prime_field::*;
+    use crate::GF19;
 
     #[test]
     fn gf019() {
@@ -494,7 +492,7 @@ mod tests_019 {
             for y in GF19::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF19::elts() {
@@ -508,7 +506,7 @@ mod tests_019 {
         for i in 0..19 {
             for j in 0..19 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF19>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF19>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -518,7 +516,7 @@ mod tests_019 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF23 {}
 impl PrimeField for GF23 {
-    const CHARACTERISTIC : u8 = 23;
+    const CHARACTERISTIC: u8 = 23;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   12,    8,    6,   14,    4,   10,    3,   18,    7,   21,    2,   16,    5,   20,
@@ -541,8 +539,8 @@ impl PrimeField for GF23 {
 }
 #[cfg(test)]
 mod tests_023 {
-    use crate::GF23;
     use crate::prime_field::*;
+    use crate::GF23;
 
     #[test]
     fn gf023() {
@@ -558,7 +556,7 @@ mod tests_023 {
             for y in GF23::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF23::elts() {
@@ -572,7 +570,7 @@ mod tests_023 {
         for i in 0..23 {
             for j in 0..23 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF23>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF23>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -582,7 +580,7 @@ mod tests_023 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF29 {}
 impl PrimeField for GF29 {
-    const CHARACTERISTIC : u8 = 29;
+    const CHARACTERISTIC: u8 = 29;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   15,   10,   22,    6,    5,   25,   11,   13,    3,    8,   17,    9,   27,    2,
@@ -605,8 +603,8 @@ impl PrimeField for GF29 {
 }
 #[cfg(test)]
 mod tests_029 {
-    use crate::GF29;
     use crate::prime_field::*;
+    use crate::GF29;
 
     #[test]
     fn gf029() {
@@ -622,7 +620,7 @@ mod tests_029 {
             for y in GF29::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF29::elts() {
@@ -636,7 +634,7 @@ mod tests_029 {
         for i in 0..29 {
             for j in 0..29 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF29>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF29>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -646,7 +644,7 @@ mod tests_029 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF31 {}
 impl PrimeField for GF31 {
-    const CHARACTERISTIC : u8 = 31;
+    const CHARACTERISTIC: u8 = 31;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   16,   21,    8,   25,   26,    9,    4,    7,   28,   17,   13,   12,   20,   29,
@@ -669,8 +667,8 @@ impl PrimeField for GF31 {
 }
 #[cfg(test)]
 mod tests_031 {
-    use crate::GF31;
     use crate::prime_field::*;
+    use crate::GF31;
 
     #[test]
     fn gf031() {
@@ -686,7 +684,7 @@ mod tests_031 {
             for y in GF31::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF31::elts() {
@@ -700,7 +698,7 @@ mod tests_031 {
         for i in 0..31 {
             for j in 0..31 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF31>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF31>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -710,7 +708,7 @@ mod tests_031 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF37 {}
 impl PrimeField for GF37 {
-    const CHARACTERISTIC : u8 = 37;
+    const CHARACTERISTIC: u8 = 37;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   19,   25,   28,   15,   31,   16,   14,   33,   26,   27,   34,   20,    8,    5,
@@ -733,8 +731,8 @@ impl PrimeField for GF37 {
 }
 #[cfg(test)]
 mod tests_037 {
-    use crate::GF37;
     use crate::prime_field::*;
+    use crate::GF37;
 
     #[test]
     fn gf037() {
@@ -750,7 +748,7 @@ mod tests_037 {
             for y in GF37::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF37::elts() {
@@ -764,7 +762,7 @@ mod tests_037 {
         for i in 0..37 {
             for j in 0..37 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF37>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF37>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -774,7 +772,7 @@ mod tests_037 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF41 {}
 impl PrimeField for GF41 {
-    const CHARACTERISTIC : u8 = 41;
+    const CHARACTERISTIC: u8 = 41;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   21,   14,   31,   33,    7,    6,   36,   32,   37,   15,   24,   19,    3,   11,
@@ -797,8 +795,8 @@ impl PrimeField for GF41 {
 }
 #[cfg(test)]
 mod tests_041 {
-    use crate::GF41;
     use crate::prime_field::*;
+    use crate::GF41;
 
     #[test]
     fn gf041() {
@@ -814,7 +812,7 @@ mod tests_041 {
             for y in GF41::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF41::elts() {
@@ -828,7 +826,7 @@ mod tests_041 {
         for i in 0..41 {
             for j in 0..41 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF41>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF41>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -838,7 +836,7 @@ mod tests_041 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF43 {}
 impl PrimeField for GF43 {
-    const CHARACTERISTIC : u8 = 43;
+    const CHARACTERISTIC: u8 = 43;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   22,   29,   11,   26,   36,   37,   27,   24,   13,    4,   18,   10,   40,   23,
@@ -861,8 +859,8 @@ impl PrimeField for GF43 {
 }
 #[cfg(test)]
 mod tests_043 {
-    use crate::GF43;
     use crate::prime_field::*;
+    use crate::GF43;
 
     #[test]
     fn gf043() {
@@ -878,7 +876,7 @@ mod tests_043 {
             for y in GF43::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF43::elts() {
@@ -892,7 +890,7 @@ mod tests_043 {
         for i in 0..43 {
             for j in 0..43 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF43>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF43>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -902,7 +900,7 @@ mod tests_043 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF47 {}
 impl PrimeField for GF47 {
-    const CHARACTERISTIC : u8 = 47;
+    const CHARACTERISTIC: u8 = 47;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   24,   16,   12,   19,    8,   27,    6,   21,   33,   30,    4,   29,   37,   22,
@@ -925,8 +923,8 @@ impl PrimeField for GF47 {
 }
 #[cfg(test)]
 mod tests_047 {
-    use crate::GF47;
     use crate::prime_field::*;
+    use crate::GF47;
 
     #[test]
     fn gf047() {
@@ -942,7 +940,7 @@ mod tests_047 {
             for y in GF47::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF47::elts() {
@@ -956,7 +954,7 @@ mod tests_047 {
         for i in 0..47 {
             for j in 0..47 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF47>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF47>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -966,7 +964,7 @@ mod tests_047 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF53 {}
 impl PrimeField for GF53 {
-    const CHARACTERISTIC : u8 = 53;
+    const CHARACTERISTIC: u8 = 53;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   27,   18,   40,   32,    9,   38,   20,    6,   16,   29,   31,   49,   19,   46,
@@ -989,8 +987,8 @@ impl PrimeField for GF53 {
 }
 #[cfg(test)]
 mod tests_053 {
-    use crate::GF53;
     use crate::prime_field::*;
+    use crate::GF53;
 
     #[test]
     fn gf053() {
@@ -1006,7 +1004,7 @@ mod tests_053 {
             for y in GF53::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF53::elts() {
@@ -1020,7 +1018,7 @@ mod tests_053 {
         for i in 0..53 {
             for j in 0..53 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF53>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF53>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1030,7 +1028,7 @@ mod tests_053 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF59 {}
 impl PrimeField for GF59 {
-    const CHARACTERISTIC : u8 = 59;
+    const CHARACTERISTIC: u8 = 59;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   30,   20,   15,   12,   10,   17,   37,   46,    6,   43,    5,   50,   38,    4,
@@ -1053,8 +1051,8 @@ impl PrimeField for GF59 {
 }
 #[cfg(test)]
 mod tests_059 {
-    use crate::GF59;
     use crate::prime_field::*;
+    use crate::GF59;
 
     #[test]
     fn gf059() {
@@ -1070,7 +1068,7 @@ mod tests_059 {
             for y in GF59::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF59::elts() {
@@ -1084,7 +1082,7 @@ mod tests_059 {
         for i in 0..59 {
             for j in 0..59 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF59>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF59>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1094,7 +1092,7 @@ mod tests_059 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF61 {}
 impl PrimeField for GF61 {
-    const CHARACTERISTIC : u8 = 61;
+    const CHARACTERISTIC: u8 = 61;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   31,   41,   46,   49,   51,   35,   23,   34,   55,   50,   56,   47,   48,   57,
@@ -1117,8 +1115,8 @@ impl PrimeField for GF61 {
 }
 #[cfg(test)]
 mod tests_061 {
-    use crate::GF61;
     use crate::prime_field::*;
+    use crate::GF61;
 
     #[test]
     fn gf061() {
@@ -1134,7 +1132,7 @@ mod tests_061 {
             for y in GF61::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF61::elts() {
@@ -1148,7 +1146,7 @@ mod tests_061 {
         for i in 0..61 {
             for j in 0..61 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF61>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF61>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1158,7 +1156,7 @@ mod tests_061 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF67 {}
 impl PrimeField for GF67 {
-    const CHARACTERISTIC : u8 = 67;
+    const CHARACTERISTIC: u8 = 67;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   34,   45,   17,   27,   56,   48,   42,   15,   47,   61,   28,   31,   24,    9,
@@ -1181,8 +1179,8 @@ impl PrimeField for GF67 {
 }
 #[cfg(test)]
 mod tests_067 {
-    use crate::GF67;
     use crate::prime_field::*;
+    use crate::GF67;
 
     #[test]
     fn gf067() {
@@ -1198,7 +1196,7 @@ mod tests_067 {
             for y in GF67::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF67::elts() {
@@ -1212,7 +1210,7 @@ mod tests_067 {
         for i in 0..67 {
             for j in 0..67 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF67>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF67>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1222,7 +1220,7 @@ mod tests_067 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF71 {}
 impl PrimeField for GF71 {
-    const CHARACTERISTIC : u8 = 71;
+    const CHARACTERISTIC: u8 = 71;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   36,   24,   18,   57,   12,   61,    9,    8,   64,   13,    6,   11,   66,   19,
@@ -1245,8 +1243,8 @@ impl PrimeField for GF71 {
 }
 #[cfg(test)]
 mod tests_071 {
-    use crate::GF71;
     use crate::prime_field::*;
+    use crate::GF71;
 
     #[test]
     fn gf071() {
@@ -1262,7 +1260,7 @@ mod tests_071 {
             for y in GF71::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF71::elts() {
@@ -1276,7 +1274,7 @@ mod tests_071 {
         for i in 0..71 {
             for j in 0..71 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF71>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF71>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1286,7 +1284,7 @@ mod tests_071 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF73 {}
 impl PrimeField for GF73 {
-    const CHARACTERISTIC : u8 = 73;
+    const CHARACTERISTIC: u8 = 73;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   37,   49,   55,   44,   61,   21,   64,   65,   22,   20,   67,   45,   47,   39,
@@ -1309,8 +1307,8 @@ impl PrimeField for GF73 {
 }
 #[cfg(test)]
 mod tests_073 {
-    use crate::GF73;
     use crate::prime_field::*;
+    use crate::GF73;
 
     #[test]
     fn gf073() {
@@ -1326,7 +1324,7 @@ mod tests_073 {
             for y in GF73::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF73::elts() {
@@ -1340,7 +1338,7 @@ mod tests_073 {
         for i in 0..73 {
             for j in 0..73 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF73>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF73>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1350,7 +1348,7 @@ mod tests_073 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF79 {}
 impl PrimeField for GF79 {
-    const CHARACTERISTIC : u8 = 79;
+    const CHARACTERISTIC: u8 = 79;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   40,   53,   20,   16,   66,   34,   10,   44,    8,   36,   33,   73,   17,   58,
@@ -1373,8 +1371,8 @@ impl PrimeField for GF79 {
 }
 #[cfg(test)]
 mod tests_079 {
-    use crate::GF79;
     use crate::prime_field::*;
+    use crate::GF79;
 
     #[test]
     fn gf079() {
@@ -1390,7 +1388,7 @@ mod tests_079 {
             for y in GF79::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF79::elts() {
@@ -1404,7 +1402,7 @@ mod tests_079 {
         for i in 0..79 {
             for j in 0..79 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF79>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF79>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1414,7 +1412,7 @@ mod tests_079 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF83 {}
 impl PrimeField for GF83 {
-    const CHARACTERISTIC : u8 = 83;
+    const CHARACTERISTIC: u8 = 83;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   42,   28,   21,   50,   14,   12,   52,   37,   25,   68,    7,   32,    6,   72,
@@ -1437,8 +1435,8 @@ impl PrimeField for GF83 {
 }
 #[cfg(test)]
 mod tests_083 {
-    use crate::GF83;
     use crate::prime_field::*;
+    use crate::GF83;
 
     #[test]
     fn gf083() {
@@ -1454,7 +1452,7 @@ mod tests_083 {
             for y in GF83::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF83::elts() {
@@ -1468,7 +1466,7 @@ mod tests_083 {
         for i in 0..83 {
             for j in 0..83 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF83>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF83>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1478,7 +1476,7 @@ mod tests_083 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF89 {}
 impl PrimeField for GF89 {
-    const CHARACTERISTIC : u8 = 89;
+    const CHARACTERISTIC: u8 = 89;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   45,   30,   67,   18,   15,   51,   78,   10,    9,   81,   52,   48,   70,    6,
@@ -1501,8 +1499,8 @@ impl PrimeField for GF89 {
 }
 #[cfg(test)]
 mod tests_089 {
-    use crate::GF89;
     use crate::prime_field::*;
+    use crate::GF89;
 
     #[test]
     fn gf089() {
@@ -1518,7 +1516,7 @@ mod tests_089 {
             for y in GF89::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF89::elts() {
@@ -1532,7 +1530,7 @@ mod tests_089 {
         for i in 0..89 {
             for j in 0..89 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF89>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF89>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1542,7 +1540,7 @@ mod tests_089 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF97 {}
 impl PrimeField for GF97 {
-    const CHARACTERISTIC : u8 = 97;
+    const CHARACTERISTIC: u8 = 97;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   49,   65,   73,   39,   81,   14,   85,   54,   68,   53,   89,   15,    7,   13,
@@ -1565,8 +1563,8 @@ impl PrimeField for GF97 {
 }
 #[cfg(test)]
 mod tests_097 {
-    use crate::GF97;
     use crate::prime_field::*;
+    use crate::GF97;
 
     #[test]
     fn gf097() {
@@ -1582,7 +1580,7 @@ mod tests_097 {
             for y in GF97::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF97::elts() {
@@ -1596,7 +1594,7 @@ mod tests_097 {
         for i in 0..97 {
             for j in 0..97 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF97>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF97>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1606,7 +1604,7 @@ mod tests_097 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF101 {}
 impl PrimeField for GF101 {
-    const CHARACTERISTIC : u8 = 101;
+    const CHARACTERISTIC: u8 = 101;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   51,   34,   76,   81,   17,   29,   38,   45,   91,   46,   59,   70,   65,   27,
@@ -1629,8 +1627,8 @@ impl PrimeField for GF101 {
 }
 #[cfg(test)]
 mod tests_101 {
-    use crate::GF101;
     use crate::prime_field::*;
+    use crate::GF101;
 
     #[test]
     fn gf101() {
@@ -1646,7 +1644,7 @@ mod tests_101 {
             for y in GF101::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF101::elts() {
@@ -1660,7 +1658,7 @@ mod tests_101 {
         for i in 0..101 {
             for j in 0..101 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF101>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF101>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1670,7 +1668,7 @@ mod tests_101 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF103 {}
 impl PrimeField for GF103 {
-    const CHARACTERISTIC : u8 = 103;
+    const CHARACTERISTIC: u8 = 103;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   52,   69,   26,   62,   86,   59,   13,   23,   31,   75,   43,    8,   81,   55,
@@ -1693,8 +1691,8 @@ impl PrimeField for GF103 {
 }
 #[cfg(test)]
 mod tests_103 {
-    use crate::GF103;
     use crate::prime_field::*;
+    use crate::GF103;
 
     #[test]
     fn gf103() {
@@ -1710,7 +1708,7 @@ mod tests_103 {
             for y in GF103::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF103::elts() {
@@ -1724,7 +1722,7 @@ mod tests_103 {
         for i in 0..103 {
             for j in 0..103 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF103>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF103>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1734,7 +1732,7 @@ mod tests_103 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF107 {}
 impl PrimeField for GF107 {
-    const CHARACTERISTIC : u8 = 107;
+    const CHARACTERISTIC: u8 = 107;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   54,   36,   27,   43,   18,   46,   67,   12,   75,   39,    9,   33,   23,   50,
@@ -1757,8 +1755,8 @@ impl PrimeField for GF107 {
 }
 #[cfg(test)]
 mod tests_107 {
-    use crate::GF107;
     use crate::prime_field::*;
+    use crate::GF107;
 
     #[test]
     fn gf107() {
@@ -1774,7 +1772,7 @@ mod tests_107 {
             for y in GF107::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF107::elts() {
@@ -1788,7 +1786,7 @@ mod tests_107 {
         for i in 0..107 {
             for j in 0..107 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF107>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF107>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1798,7 +1796,7 @@ mod tests_107 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF109 {}
 impl PrimeField for GF109 {
-    const CHARACTERISTIC : u8 = 109;
+    const CHARACTERISTIC: u8 = 109;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   55,   73,   82,   22,   91,   78,   41,   97,   11,   10,  100,   42,   39,   80,
@@ -1821,8 +1819,8 @@ impl PrimeField for GF109 {
 }
 #[cfg(test)]
 mod tests_109 {
-    use crate::GF109;
     use crate::prime_field::*;
+    use crate::GF109;
 
     #[test]
     fn gf109() {
@@ -1838,7 +1836,7 @@ mod tests_109 {
             for y in GF109::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF109::elts() {
@@ -1852,7 +1850,7 @@ mod tests_109 {
         for i in 0..109 {
             for j in 0..109 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF109>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF109>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1862,7 +1860,7 @@ mod tests_109 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF113 {}
 impl PrimeField for GF113 {
-    const CHARACTERISTIC : u8 = 113;
+    const CHARACTERISTIC: u8 = 113;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   57,   38,   85,   68,   19,   97,   99,   88,   34,   72,   66,   87,  105,   98,
@@ -1885,8 +1883,8 @@ impl PrimeField for GF113 {
 }
 #[cfg(test)]
 mod tests_113 {
-    use crate::GF113;
     use crate::prime_field::*;
+    use crate::GF113;
 
     #[test]
     fn gf113() {
@@ -1902,7 +1900,7 @@ mod tests_113 {
             for y in GF113::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF113::elts() {
@@ -1916,7 +1914,7 @@ mod tests_113 {
         for i in 0..113 {
             for j in 0..113 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF113>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF113>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1926,7 +1924,7 @@ mod tests_113 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF127 {}
 impl PrimeField for GF127 {
-    const CHARACTERISTIC : u8 = 127;
+    const CHARACTERISTIC: u8 = 127;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   64,   85,   32,   51,  106,  109,   16,  113,   89,  104,   53,   88,  118,   17,
@@ -1949,8 +1947,8 @@ impl PrimeField for GF127 {
 }
 #[cfg(test)]
 mod tests_127 {
-    use crate::GF127;
     use crate::prime_field::*;
+    use crate::GF127;
 
     #[test]
     fn gf127() {
@@ -1966,7 +1964,7 @@ mod tests_127 {
             for y in GF127::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF127::elts() {
@@ -1980,7 +1978,7 @@ mod tests_127 {
         for i in 0..127 {
             for j in 0..127 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF127>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF127>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -1990,7 +1988,7 @@ mod tests_127 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF131 {}
 impl PrimeField for GF131 {
-    const CHARACTERISTIC : u8 = 131;
+    const CHARACTERISTIC: u8 = 131;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   66,   44,   33,  105,   22,   75,   82,  102,  118,   12,   11,  121,  103,   35,
@@ -2013,8 +2011,8 @@ impl PrimeField for GF131 {
 }
 #[cfg(test)]
 mod tests_131 {
-    use crate::GF131;
     use crate::prime_field::*;
+    use crate::GF131;
 
     #[test]
     fn gf131() {
@@ -2030,7 +2028,7 @@ mod tests_131 {
             for y in GF131::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF131::elts() {
@@ -2044,7 +2042,7 @@ mod tests_131 {
         for i in 0..131 {
             for j in 0..131 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF131>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF131>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2054,7 +2052,7 @@ mod tests_131 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF137 {}
 impl PrimeField for GF137 {
-    const CHARACTERISTIC : u8 = 137;
+    const CHARACTERISTIC: u8 = 137;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   69,   46,  103,   55,   23,   98,  120,   61,   96,   25,   80,  116,   49,   64,
@@ -2077,8 +2075,8 @@ impl PrimeField for GF137 {
 }
 #[cfg(test)]
 mod tests_137 {
-    use crate::GF137;
     use crate::prime_field::*;
+    use crate::GF137;
 
     #[test]
     fn gf137() {
@@ -2094,7 +2092,7 @@ mod tests_137 {
             for y in GF137::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF137::elts() {
@@ -2108,7 +2106,7 @@ mod tests_137 {
         for i in 0..137 {
             for j in 0..137 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF137>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF137>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2118,7 +2116,7 @@ mod tests_137 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF139 {}
 impl PrimeField for GF139 {
-    const CHARACTERISTIC : u8 = 139;
+    const CHARACTERISTIC: u8 = 139;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   70,   93,   35,   28,  116,   20,   87,   31,   14,   38,   58,  107,   10,  102,
@@ -2141,8 +2139,8 @@ impl PrimeField for GF139 {
 }
 #[cfg(test)]
 mod tests_139 {
-    use crate::GF139;
     use crate::prime_field::*;
+    use crate::GF139;
 
     #[test]
     fn gf139() {
@@ -2158,7 +2156,7 @@ mod tests_139 {
             for y in GF139::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF139::elts() {
@@ -2172,7 +2170,7 @@ mod tests_139 {
         for i in 0..139 {
             for j in 0..139 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF139>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF139>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2182,7 +2180,7 @@ mod tests_139 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF149 {}
 impl PrimeField for GF149 {
-    const CHARACTERISTIC : u8 = 149;
+    const CHARACTERISTIC: u8 = 149;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   75,   50,  112,   30,   25,   64,   56,  116,   15,  122,   87,   23,   32,   10,
@@ -2205,8 +2203,8 @@ impl PrimeField for GF149 {
 }
 #[cfg(test)]
 mod tests_149 {
-    use crate::GF149;
     use crate::prime_field::*;
+    use crate::GF149;
 
     #[test]
     fn gf149() {
@@ -2222,7 +2220,7 @@ mod tests_149 {
             for y in GF149::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF149::elts() {
@@ -2236,7 +2234,7 @@ mod tests_149 {
         for i in 0..149 {
             for j in 0..149 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF149>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF149>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2246,7 +2244,7 @@ mod tests_149 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF151 {}
 impl PrimeField for GF151 {
-    const CHARACTERISTIC : u8 = 151;
+    const CHARACTERISTIC: u8 = 151;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   76,  101,   38,  121,  126,  108,   19,   84,  136,   55,   63,   93,   54,  141,
@@ -2269,8 +2267,8 @@ impl PrimeField for GF151 {
 }
 #[cfg(test)]
 mod tests_151 {
-    use crate::GF151;
     use crate::prime_field::*;
+    use crate::GF151;
 
     #[test]
     fn gf151() {
@@ -2286,7 +2284,7 @@ mod tests_151 {
             for y in GF151::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF151::elts() {
@@ -2300,7 +2298,7 @@ mod tests_151 {
         for i in 0..151 {
             for j in 0..151 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF151>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF151>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2310,7 +2308,7 @@ mod tests_151 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF157 {}
 impl PrimeField for GF157 {
-    const CHARACTERISTIC : u8 = 157;
+    const CHARACTERISTIC: u8 = 157;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   79,  105,  118,   63,  131,   45,   59,   35,  110,  100,  144,  145,  101,   21,
@@ -2333,8 +2331,8 @@ impl PrimeField for GF157 {
 }
 #[cfg(test)]
 mod tests_157 {
-    use crate::GF157;
     use crate::prime_field::*;
+    use crate::GF157;
 
     #[test]
     fn gf157() {
@@ -2350,7 +2348,7 @@ mod tests_157 {
             for y in GF157::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF157::elts() {
@@ -2364,7 +2362,7 @@ mod tests_157 {
         for i in 0..157 {
             for j in 0..157 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF157>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF157>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2374,7 +2372,7 @@ mod tests_157 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF163 {}
 impl PrimeField for GF163 {
-    const CHARACTERISTIC : u8 = 163;
+    const CHARACTERISTIC: u8 = 163;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   82,  109,   41,   98,  136,   70,  102,  145,   49,   89,   68,  138,   35,   87,
@@ -2397,8 +2395,8 @@ impl PrimeField for GF163 {
 }
 #[cfg(test)]
 mod tests_163 {
-    use crate::GF163;
     use crate::prime_field::*;
+    use crate::GF163;
 
     #[test]
     fn gf163() {
@@ -2414,7 +2412,7 @@ mod tests_163 {
             for y in GF163::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF163::elts() {
@@ -2428,7 +2426,7 @@ mod tests_163 {
         for i in 0..163 {
             for j in 0..163 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF163>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF163>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2438,7 +2436,7 @@ mod tests_163 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF167 {}
 impl PrimeField for GF167 {
-    const CHARACTERISTIC : u8 = 167;
+    const CHARACTERISTIC: u8 = 167;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   84,   56,   42,   67,   28,   24,   21,  130,  117,   76,   14,   90,   12,   78,
@@ -2461,8 +2459,8 @@ impl PrimeField for GF167 {
 }
 #[cfg(test)]
 mod tests_167 {
-    use crate::GF167;
     use crate::prime_field::*;
+    use crate::GF167;
 
     #[test]
     fn gf167() {
@@ -2478,7 +2476,7 @@ mod tests_167 {
             for y in GF167::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF167::elts() {
@@ -2492,7 +2490,7 @@ mod tests_167 {
         for i in 0..167 {
             for j in 0..167 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF167>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF167>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2502,7 +2500,7 @@ mod tests_167 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF173 {}
 impl PrimeField for GF173 {
-    const CHARACTERISTIC : u8 = 173;
+    const CHARACTERISTIC: u8 = 173;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   87,   58,  130,  104,   29,   99,   65,   77,   52,   63,  101,   40,  136,  150,
@@ -2525,8 +2523,8 @@ impl PrimeField for GF173 {
 }
 #[cfg(test)]
 mod tests_173 {
-    use crate::GF173;
     use crate::prime_field::*;
+    use crate::GF173;
 
     #[test]
     fn gf173() {
@@ -2542,7 +2540,7 @@ mod tests_173 {
             for y in GF173::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF173::elts() {
@@ -2556,7 +2554,7 @@ mod tests_173 {
         for i in 0..173 {
             for j in 0..173 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF173>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF173>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2566,7 +2564,7 @@ mod tests_173 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF179 {}
 impl PrimeField for GF179 {
-    const CHARACTERISTIC : u8 = 179;
+    const CHARACTERISTIC: u8 = 179;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   90,   60,   45,   36,   30,  128,  112,   20,   18,  114,   15,  124,   64,   12,
@@ -2589,8 +2587,8 @@ impl PrimeField for GF179 {
 }
 #[cfg(test)]
 mod tests_179 {
-    use crate::GF179;
     use crate::prime_field::*;
+    use crate::GF179;
 
     #[test]
     fn gf179() {
@@ -2606,7 +2604,7 @@ mod tests_179 {
             for y in GF179::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF179::elts() {
@@ -2620,7 +2618,7 @@ mod tests_179 {
         for i in 0..179 {
             for j in 0..179 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF179>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF179>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2630,7 +2628,7 @@ mod tests_179 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF181 {}
 impl PrimeField for GF181 {
-    const CHARACTERISTIC : u8 = 181;
+    const CHARACTERISTIC: u8 = 181;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   91,  121,  136,  145,  151,   26,   68,  161,  163,   33,  166,   14,   13,  169,
@@ -2653,8 +2651,8 @@ impl PrimeField for GF181 {
 }
 #[cfg(test)]
 mod tests_181 {
-    use crate::GF181;
     use crate::prime_field::*;
+    use crate::GF181;
 
     #[test]
     fn gf181() {
@@ -2670,7 +2668,7 @@ mod tests_181 {
             for y in GF181::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF181::elts() {
@@ -2684,7 +2682,7 @@ mod tests_181 {
         for i in 0..181 {
             for j in 0..181 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF181>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF181>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2694,7 +2692,7 @@ mod tests_181 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF191 {}
 impl PrimeField for GF191 {
-    const CHARACTERISTIC : u8 = 191;
+    const CHARACTERISTIC: u8 = 191;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   96,   64,   48,  153,   32,   82,   24,   85,  172,  139,   16,  147,   41,   51,
@@ -2717,8 +2715,8 @@ impl PrimeField for GF191 {
 }
 #[cfg(test)]
 mod tests_191 {
-    use crate::GF191;
     use crate::prime_field::*;
+    use crate::GF191;
 
     #[test]
     fn gf191() {
@@ -2734,7 +2732,7 @@ mod tests_191 {
             for y in GF191::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF191::elts() {
@@ -2748,7 +2746,7 @@ mod tests_191 {
         for i in 0..191 {
             for j in 0..191 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF191>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF191>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2758,7 +2756,7 @@ mod tests_191 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF193 {}
 impl PrimeField for GF193 {
-    const CHARACTERISTIC : u8 = 193;
+    const CHARACTERISTIC: u8 = 193;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   97,  129,  145,  116,  161,  138,  169,   43,   58,  158,  177,  104,   69,  103,
@@ -2781,8 +2779,8 @@ impl PrimeField for GF193 {
 }
 #[cfg(test)]
 mod tests_193 {
-    use crate::GF193;
     use crate::prime_field::*;
+    use crate::GF193;
 
     #[test]
     fn gf193() {
@@ -2798,7 +2796,7 @@ mod tests_193 {
             for y in GF193::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF193::elts() {
@@ -2812,7 +2810,7 @@ mod tests_193 {
         for i in 0..193 {
             for j in 0..193 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF193>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF193>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2822,7 +2820,7 @@ mod tests_193 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF197 {}
 impl PrimeField for GF197 {
-    const CHARACTERISTIC : u8 = 197;
+    const CHARACTERISTIC: u8 = 197;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   99,   66,  148,   79,   33,  169,   74,   22,  138,   18,  115,   91,  183,   92,
@@ -2845,8 +2843,8 @@ impl PrimeField for GF197 {
 }
 #[cfg(test)]
 mod tests_197 {
-    use crate::GF197;
     use crate::prime_field::*;
+    use crate::GF197;
 
     #[test]
     fn gf197() {
@@ -2862,7 +2860,7 @@ mod tests_197 {
             for y in GF197::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF197::elts() {
@@ -2876,7 +2874,7 @@ mod tests_197 {
         for i in 0..197 {
             for j in 0..197 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF197>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF197>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2886,7 +2884,7 @@ mod tests_197 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF199 {}
 impl PrimeField for GF199 {
-    const CHARACTERISTIC : u8 = 199;
+    const CHARACTERISTIC: u8 = 199;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  100,  133,   50,   40,  166,   57,   25,  177,   20,  181,   83,   46,  128,  146,
@@ -2909,8 +2907,8 @@ impl PrimeField for GF199 {
 }
 #[cfg(test)]
 mod tests_199 {
-    use crate::GF199;
     use crate::prime_field::*;
+    use crate::GF199;
 
     #[test]
     fn gf199() {
@@ -2926,7 +2924,7 @@ mod tests_199 {
             for y in GF199::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF199::elts() {
@@ -2940,7 +2938,7 @@ mod tests_199 {
         for i in 0..199 {
             for j in 0..199 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF199>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF199>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -2950,7 +2948,7 @@ mod tests_199 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF211 {}
 impl PrimeField for GF211 {
-    const CHARACTERISTIC : u8 = 211;
+    const CHARACTERISTIC: u8 = 211;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  106,  141,   53,  169,  176,  181,  132,   47,  190,   96,   88,   65,  196,  197,
@@ -2973,8 +2971,8 @@ impl PrimeField for GF211 {
 }
 #[cfg(test)]
 mod tests_211 {
-    use crate::GF211;
     use crate::prime_field::*;
+    use crate::GF211;
 
     #[test]
     fn gf211() {
@@ -2990,7 +2988,7 @@ mod tests_211 {
             for y in GF211::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF211::elts() {
@@ -3004,7 +3002,7 @@ mod tests_211 {
         for i in 0..211 {
             for j in 0..211 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF211>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF211>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -3014,7 +3012,7 @@ mod tests_211 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF223 {}
 impl PrimeField for GF223 {
-    const CHARACTERISTIC : u8 = 223;
+    const CHARACTERISTIC: u8 = 223;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  112,  149,   56,  134,  186,   32,   28,  124,   67,  142,   93,  103,   16,  119,
@@ -3037,8 +3035,8 @@ impl PrimeField for GF223 {
 }
 #[cfg(test)]
 mod tests_223 {
-    use crate::GF223;
     use crate::prime_field::*;
+    use crate::GF223;
 
     #[test]
     fn gf223() {
@@ -3054,7 +3052,7 @@ mod tests_223 {
             for y in GF223::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF223::elts() {
@@ -3068,7 +3066,7 @@ mod tests_223 {
         for i in 0..223 {
             for j in 0..223 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF223>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF223>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -3078,7 +3076,7 @@ mod tests_223 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF227 {}
 impl PrimeField for GF227 {
-    const CHARACTERISTIC : u8 = 227;
+    const CHARACTERISTIC: u8 = 227;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  114,   76,   57,   91,   38,   65,  142,  101,  159,   62,   19,   35,  146,  106,
@@ -3101,8 +3099,8 @@ impl PrimeField for GF227 {
 }
 #[cfg(test)]
 mod tests_227 {
-    use crate::GF227;
     use crate::prime_field::*;
+    use crate::GF227;
 
     #[test]
     fn gf227() {
@@ -3118,7 +3116,7 @@ mod tests_227 {
             for y in GF227::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF227::elts() {
@@ -3132,7 +3130,7 @@ mod tests_227 {
         for i in 0..227 {
             for j in 0..227 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF227>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF227>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -3142,7 +3140,7 @@ mod tests_227 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF229 {}
 impl PrimeField for GF229 {
-    const CHARACTERISTIC : u8 = 229;
+    const CHARACTERISTIC: u8 = 229;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  115,  153,  172,   46,  191,  131,   86,   51,   23,  125,  210,  141,  180,  168,
@@ -3165,8 +3163,8 @@ impl PrimeField for GF229 {
 }
 #[cfg(test)]
 mod tests_229 {
-    use crate::GF229;
     use crate::prime_field::*;
+    use crate::GF229;
 
     #[test]
     fn gf229() {
@@ -3182,7 +3180,7 @@ mod tests_229 {
             for y in GF229::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF229::elts() {
@@ -3196,7 +3194,7 @@ mod tests_229 {
         for i in 0..229 {
             for j in 0..229 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF229>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF229>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -3206,7 +3204,7 @@ mod tests_229 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF233 {}
 impl PrimeField for GF233 {
-    const CHARACTERISTIC : u8 = 233;
+    const CHARACTERISTIC: u8 = 233;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  117,   78,  175,  140,   39,  100,  204,   26,   70,  106,  136,   18,   50,  202,
@@ -3229,8 +3227,8 @@ impl PrimeField for GF233 {
 }
 #[cfg(test)]
 mod tests_233 {
-    use crate::GF233;
     use crate::prime_field::*;
+    use crate::GF233;
 
     #[test]
     fn gf233() {
@@ -3246,7 +3244,7 @@ mod tests_233 {
             for y in GF233::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF233::elts() {
@@ -3260,7 +3258,7 @@ mod tests_233 {
         for i in 0..233 {
             for j in 0..233 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF233>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF233>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -3270,7 +3268,7 @@ mod tests_233 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF239 {}
 impl PrimeField for GF239 {
-    const CHARACTERISTIC : u8 = 239;
+    const CHARACTERISTIC: u8 = 239;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  120,   80,   60,   48,   40,  205,   30,  186,   24,   87,   20,   92,  222,   16,
@@ -3293,8 +3291,8 @@ impl PrimeField for GF239 {
 }
 #[cfg(test)]
 mod tests_239 {
-    use crate::GF239;
     use crate::prime_field::*;
+    use crate::GF239;
 
     #[test]
     fn gf239() {
@@ -3310,7 +3308,7 @@ mod tests_239 {
             for y in GF239::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF239::elts() {
@@ -3324,7 +3322,7 @@ mod tests_239 {
         for i in 0..239 {
             for j in 0..239 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF239>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF239>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -3334,7 +3332,7 @@ mod tests_239 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF241 {}
 impl PrimeField for GF241 {
-    const CHARACTERISTIC : u8 = 241;
+    const CHARACTERISTIC: u8 = 241;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  121,  161,  181,  193,  201,   69,  211,  134,  217,   22,  221,  204,  155,  225,
@@ -3357,8 +3355,8 @@ impl PrimeField for GF241 {
 }
 #[cfg(test)]
 mod tests_241 {
-    use crate::GF241;
     use crate::prime_field::*;
+    use crate::GF241;
 
     #[test]
     fn gf241() {
@@ -3374,7 +3372,7 @@ mod tests_241 {
             for y in GF241::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF241::elts() {
@@ -3388,7 +3386,7 @@ mod tests_241 {
         for i in 0..241 {
             for j in 0..241 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF241>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF241>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -3398,7 +3396,7 @@ mod tests_241 {
 #[derive(Clone, Copy, Debug)]
 pub struct GF251 {}
 impl PrimeField for GF251 {
-    const CHARACTERISTIC : u8 = 251;
+    const CHARACTERISTIC: u8 = 251;
     #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  126,   84,   63,  201,   42,   36,  157,   28,  226,  137,   21,   58,   18,   67,
@@ -3421,8 +3419,8 @@ impl PrimeField for GF251 {
 }
 #[cfg(test)]
 mod tests_251 {
-    use crate::GF251;
     use crate::prime_field::*;
+    use crate::GF251;
 
     #[test]
     fn gf251() {
@@ -3438,7 +3436,7 @@ mod tests_251 {
             for y in GF251::elts() {
                 assert_eq!(x + y, y + x);
                 assert_eq!(x * y, y * x);
-                assert_eq!(x - y, - (y - x));
+                assert_eq!(x - y, -(y - x));
             }
         }
         for x in GF251::elts() {
@@ -3452,7 +3450,7 @@ mod tests_251 {
         for i in 0..251 {
             for j in 0..251 {
                 if i != j {
-                  assert_ne!(PrimeFieldElt::<GF251>::from(i), PrimeFieldElt::from(j));
+                    assert_ne!(PrimeFieldElt::<GF251>::from(i), PrimeFieldElt::from(j));
                 }
             }
         }
@@ -3463,23 +3461,16 @@ mod tests_251 {
 pub struct GF4 {}
 impl PrimePowerField for GF4 {
     type FieldOfIntegers = GF2;
-    const IRRED_POLY : [PrimeFieldElt<Self::FieldOfIntegers>; 4] =
-        [GF2::one,
-         GF2::one,
-         GF2::one,
-         GF2::zero];
-    const DEGREE : usize = 3;
+    const IRRED_POLY: [PrimeFieldElt<Self::FieldOfIntegers>; 4] =
+        [GF2::one, GF2::one, GF2::one, GF2::zero];
+    const DEGREE: usize = 3;
 }
 
 #[derive(Clone, Copy, Debug)]
 pub struct GF9 {}
 impl PrimePowerField for GF9 {
     type FieldOfIntegers = GF3;
-    const IRRED_POLY : [PrimeFieldElt<Self::FieldOfIntegers>; 4] =
-        [GF3::one,
-         GF3::zero,
-         GF3::one,
-         GF3::zero];
-    const DEGREE : usize = 3;
+    const IRRED_POLY: [PrimeFieldElt<Self::FieldOfIntegers>; 4] =
+        [GF3::one, GF3::zero, GF3::one, GF3::zero];
+    const DEGREE: usize = 3;
 }
-
