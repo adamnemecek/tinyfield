@@ -7,6 +7,7 @@ use crate::prime_power_field::PrimePowerField;
 pub struct GF2 {}
 impl PrimeField for GF2 {
     const CHARACTERISTIC : u8 = 2;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
            0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -70,6 +71,7 @@ mod tests_002 {
 pub struct GF3 {}
 impl PrimeField for GF3 {
     const CHARACTERISTIC : u8 = 3;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    2,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
            0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -133,6 +135,7 @@ mod tests_003 {
 pub struct GF5 {}
 impl PrimeField for GF5 {
     const CHARACTERISTIC : u8 = 5;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    3,    2,    4,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
            0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -196,6 +199,7 @@ mod tests_005 {
 pub struct GF7 {}
 impl PrimeField for GF7 {
     const CHARACTERISTIC : u8 = 7;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    4,    5,    2,    3,    6,    0,    0,    0,    0,    0,    0,    0,    0,    0,
            0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -259,6 +263,7 @@ mod tests_007 {
 pub struct GF11 {}
 impl PrimeField for GF11 {
     const CHARACTERISTIC : u8 = 11;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    6,    4,    3,    9,    2,    8,    7,    5,   10,    0,    0,    0,    0,    0,
            0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -322,6 +327,7 @@ mod tests_011 {
 pub struct GF13 {}
 impl PrimeField for GF13 {
     const CHARACTERISTIC : u8 = 13;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    7,    9,   10,    8,   11,    2,    5,    3,    4,    6,   12,    0,    0,    0,
            0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -385,6 +391,7 @@ mod tests_013 {
 pub struct GF17 {}
 impl PrimeField for GF17 {
     const CHARACTERISTIC : u8 = 17;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,    9,    6,   13,    7,    3,    5,   15,    2,   12,   14,   10,    4,   11,    8,
           16,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -448,6 +455,7 @@ mod tests_017 {
 pub struct GF19 {}
 impl PrimeField for GF19 {
     const CHARACTERISTIC : u8 = 19;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   10,   13,    5,    4,   16,   11,   12,   17,    2,    7,    8,    3,   15,   14,
            6,    9,   18,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -511,6 +519,7 @@ mod tests_019 {
 pub struct GF23 {}
 impl PrimeField for GF23 {
     const CHARACTERISTIC : u8 = 23;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   12,    8,    6,   14,    4,   10,    3,   18,    7,   21,    2,   16,    5,   20,
           13,   19,    9,   17,   15,   11,   22,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -574,6 +583,7 @@ mod tests_023 {
 pub struct GF29 {}
 impl PrimeField for GF29 {
     const CHARACTERISTIC : u8 = 29;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   15,   10,   22,    6,    5,   25,   11,   13,    3,    8,   17,    9,   27,    2,
           20,   12,   21,   26,   16,   18,    4,   24,   23,    7,   19,   14,   28,    0,    0,    0,
@@ -637,6 +647,7 @@ mod tests_029 {
 pub struct GF31 {}
 impl PrimeField for GF31 {
     const CHARACTERISTIC : u8 = 31;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   16,   21,    8,   25,   26,    9,    4,    7,   28,   17,   13,   12,   20,   29,
            2,   11,   19,   18,   14,    3,   24,   27,   22,    5,    6,   23,   10,   15,   30,    0,
@@ -700,6 +711,7 @@ mod tests_031 {
 pub struct GF37 {}
 impl PrimeField for GF37 {
     const CHARACTERISTIC : u8 = 37;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   19,   25,   28,   15,   31,   16,   14,   33,   26,   27,   34,   20,    8,    5,
            7,   24,   35,    2,   13,   30,   32,   29,   17,    3,   10,   11,    4,   23,   21,    6,
@@ -763,6 +775,7 @@ mod tests_037 {
 pub struct GF41 {}
 impl PrimeField for GF41 {
     const CHARACTERISTIC : u8 = 41;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   21,   14,   31,   33,    7,    6,   36,   32,   37,   15,   24,   19,    3,   11,
           18,   29,   16,   13,   39,    2,   28,   25,   12,   23,   30,   38,   22,   17,   26,    4,
@@ -826,6 +839,7 @@ mod tests_041 {
 pub struct GF43 {}
 impl PrimeField for GF43 {
     const CHARACTERISTIC : u8 = 43;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   22,   29,   11,   26,   36,   37,   27,   24,   13,    4,   18,   10,   40,   23,
           35,   38,   12,   34,   28,   41,    2,   15,    9,   31,    5,    8,   20,    3,   33,   25,
@@ -889,6 +903,7 @@ mod tests_043 {
 pub struct GF47 {}
 impl PrimeField for GF47 {
     const CHARACTERISTIC : u8 = 47;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   24,   16,   12,   19,    8,   27,    6,   21,   33,   30,    4,   29,   37,   22,
            3,   36,   34,    5,   40,    9,   15,   45,    2,   32,   38,    7,   42,   13,   11,   44,
@@ -952,6 +967,7 @@ mod tests_047 {
 pub struct GF53 {}
 impl PrimeField for GF53 {
     const CHARACTERISTIC : u8 = 53;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   27,   18,   40,   32,    9,   38,   20,    6,   16,   29,   31,   49,   19,   46,
           10,   25,    3,   14,    8,   48,   41,   30,   42,   17,   51,    2,   36,   11,   23,   12,
@@ -1015,6 +1031,7 @@ mod tests_053 {
 pub struct GF59 {}
 impl PrimeField for GF59 {
     const CHARACTERISTIC : u8 = 59;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   30,   20,   15,   12,   10,   17,   37,   46,    6,   43,    5,   50,   38,    4,
           48,    7,   23,   28,    3,   45,   51,   18,   32,   26,   25,   35,   19,   57,    2,   40,
@@ -1078,6 +1095,7 @@ mod tests_059 {
 pub struct GF61 {}
 impl PrimeField for GF61 {
     const CHARACTERISTIC : u8 = 61;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   31,   41,   46,   49,   51,   35,   23,   34,   55,   50,   56,   47,   48,   57,
           42,   18,   17,   45,   58,   32,   25,    8,   28,   22,   54,   52,   24,   40,   59,    2,
@@ -1141,6 +1159,7 @@ mod tests_061 {
 pub struct GF67 {}
 impl PrimeField for GF67 {
     const CHARACTERISTIC : u8 = 67;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   34,   45,   17,   27,   56,   48,   42,   15,   47,   61,   28,   31,   24,    9,
           21,    4,   41,   60,   57,   16,   64,   35,   14,   59,   49,    5,   12,   37,   38,   13,
@@ -1204,6 +1223,7 @@ mod tests_067 {
 pub struct GF71 {}
 impl PrimeField for GF71 {
     const CHARACTERISTIC : u8 = 71;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   36,   24,   18,   57,   12,   61,    9,    8,   64,   13,    6,   11,   66,   19,
           40,   46,    4,   15,   32,   44,   42,   34,    3,   54,   41,   50,   33,   49,   45,   55,
@@ -1267,6 +1287,7 @@ mod tests_071 {
 pub struct GF73 {}
 impl PrimeField for GF73 {
     const CHARACTERISTIC : u8 = 73;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   37,   49,   55,   44,   61,   21,   64,   65,   22,   20,   67,   45,   47,   39,
           32,   43,   69,   50,   11,    7,   10,   54,   70,   38,   59,   46,   60,   68,   56,   33,
@@ -1330,6 +1351,7 @@ mod tests_073 {
 pub struct GF79 {}
 impl PrimeField for GF79 {
     const CHARACTERISTIC : u8 = 79;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   40,   53,   20,   16,   66,   34,   10,   44,    8,   36,   33,   73,   17,   58,
            5,   14,   22,   25,    4,   64,   18,   55,   56,   19,   76,   41,   48,   30,   29,   51,
@@ -1393,6 +1415,7 @@ mod tests_079 {
 pub struct GF83 {}
 impl PrimeField for GF83 {
     const CHARACTERISTIC : u8 = 83;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   42,   28,   21,   50,   14,   12,   52,   37,   25,   68,    7,   32,    6,   72,
           26,   44,   60,   35,   54,    4,   34,   65,   45,   10,   16,   40,    3,   63,   36,   75,
@@ -1456,6 +1479,7 @@ mod tests_083 {
 pub struct GF89 {}
 impl PrimeField for GF89 {
     const CHARACTERISTIC : u8 = 89;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   45,   30,   67,   18,   15,   51,   78,   10,    9,   81,   52,   48,   70,    6,
           39,   21,    5,   75,   49,   17,   85,   31,   26,   57,   24,   33,   35,   43,    3,   23,
@@ -1519,6 +1543,7 @@ mod tests_089 {
 pub struct GF97 {}
 impl PrimeField for GF97 {
     const CHARACTERISTIC : u8 = 97;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   49,   65,   73,   39,   81,   14,   85,   54,   68,   53,   89,   15,    7,   13,
           91,   40,   27,   46,   34,   37,   75,   38,   93,   66,   56,   18,   52,   87,   55,   72,
@@ -1582,6 +1607,7 @@ mod tests_097 {
 pub struct GF101 {}
 impl PrimeField for GF101 {
     const CHARACTERISTIC : u8 = 101;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   51,   34,   76,   81,   17,   29,   38,   45,   91,   46,   59,   70,   65,   27,
           19,    6,   73,   16,   96,   77,   23,   22,   80,   97,   35,   15,   83,    7,   64,   88,
@@ -1645,6 +1671,7 @@ mod tests_101 {
 pub struct GF103 {}
 impl PrimeField for GF103 {
     const CHARACTERISTIC : u8 = 103;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   52,   69,   26,   62,   86,   59,   13,   23,   31,   75,   43,    8,   81,   55,
           58,   97,   63,   38,   67,   54,   89,    9,   73,   33,    4,   42,   92,   32,   79,   10,
@@ -1708,6 +1735,7 @@ mod tests_103 {
 pub struct GF107 {}
 impl PrimeField for GF107 {
     const CHARACTERISTIC : u8 = 107;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   54,   36,   27,   43,   18,   46,   67,   12,   75,   39,    9,   33,   23,   50,
           87,   63,    6,   62,   91,   51,   73,   14,   58,   30,   70,    4,   65,   48,   25,   38,
@@ -1771,6 +1799,7 @@ mod tests_107 {
 pub struct GF109 {}
 impl PrimeField for GF109 {
     const CHARACTERISTIC : u8 = 109;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   55,   73,   82,   22,   91,   78,   41,   97,   11,   10,  100,   42,   39,   80,
           75,   77,  103,   23,   60,   26,    5,   19,   50,   48,   21,  105,   74,   94,   40,  102,
@@ -1834,6 +1863,7 @@ mod tests_109 {
 pub struct GF113 {}
 impl PrimeField for GF113 {
     const CHARACTERISTIC : u8 = 113;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   57,   38,   85,   68,   19,   97,   99,   88,   34,   72,   66,   87,  105,   98,
          106,   20,   44,    6,   17,   70,   36,   59,   33,  104,  100,   67,  109,   39,   49,   62,
@@ -1897,6 +1927,7 @@ mod tests_113 {
 pub struct GF127 {}
 impl PrimeField for GF127 {
     const CHARACTERISTIC : u8 = 127;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   64,   85,   32,   51,  106,  109,   16,  113,   89,  104,   53,   88,  118,   17,
            8,   15,  120,  107,  108,  121,   52,  116,   90,   61,   44,   80,   59,   92,   72,   41,
@@ -1960,6 +1991,7 @@ mod tests_127 {
 pub struct GF131 {}
 impl PrimeField for GF131 {
     const CHARACTERISTIC : u8 = 131;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   66,   44,   33,  105,   22,   75,   82,  102,  118,   12,   11,  121,  103,   35,
           41,   54,   51,   69,   59,   25,    6,   57,   71,   21,  126,   34,  117,  122,   83,   93,
@@ -2023,6 +2055,7 @@ mod tests_131 {
 pub struct GF137 {}
 impl PrimeField for GF137 {
     const CHARACTERISTIC : u8 = 137;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   69,   46,  103,   55,   23,   98,  120,   61,   96,   25,   80,  116,   49,   64,
           60,  129,   99,  101,   48,  124,   81,    6,   40,   11,   58,   66,   93,   52,   32,   84,
@@ -2086,6 +2119,7 @@ mod tests_137 {
 pub struct GF139 {}
 impl PrimeField for GF139 {
     const CHARACTERISTIC : u8 = 139;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   70,   93,   35,   28,  116,   20,   87,   31,   14,   38,   58,  107,   10,  102,
          113,   90,   85,   22,    7,   53,   19,  133,   29,   89,  123,  103,    5,   24,   51,    9,
@@ -2149,6 +2183,7 @@ mod tests_139 {
 pub struct GF149 {}
 impl PrimeField for GF149 {
     const CHARACTERISTIC : u8 = 149;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   75,   50,  112,   30,   25,   64,   56,  116,   15,  122,   87,   23,   32,   10,
           28,  114,   58,  102,   82,   71,   61,   13,  118,    6,   86,  138,   16,   36,    5,  125,
@@ -2212,6 +2247,7 @@ mod tests_149 {
 pub struct GF151 {}
 impl PrimeField for GF151 {
     const CHARACTERISTIC : u8 = 151;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   76,  101,   38,  121,  126,  108,   19,   84,  136,   55,   63,   93,   54,  141,
           85,   80,   42,    8,   68,   36,  103,   46,  107,  145,  122,   28,   27,  125,  146,   39,
@@ -2275,6 +2311,7 @@ mod tests_151 {
 pub struct GF157 {}
 impl PrimeField for GF157 {
     const CHARACTERISTIC : u8 = 157;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   79,  105,  118,   63,  131,   45,   59,   35,  110,  100,  144,  145,  101,   21,
          108,   37,   96,  124,   55,   15,   50,   41,   72,   44,  151,   64,  129,   65,   89,   76,
@@ -2338,6 +2375,7 @@ mod tests_157 {
 pub struct GF163 {}
 impl PrimeField for GF163 {
     const CHARACTERISTIC : u8 = 163;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   82,  109,   41,   98,  136,   70,  102,  145,   49,   89,   68,  138,   35,   87,
           51,   48,  154,  103,  106,  132,  126,   78,   34,  150,   69,  157,   99,   45,  125,  142,
@@ -2401,6 +2439,7 @@ mod tests_163 {
 pub struct GF167 {}
 impl PrimeField for GF167 {
     const CHARACTERISTIC : u8 = 167;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   84,   56,   42,   67,   28,   24,   21,  130,  117,   76,   14,   90,   12,   78,
           94,   59,   65,   44,  142,    8,   38,  138,    7,  147,   45,   99,    6,  144,   39,   97,
@@ -2464,6 +2503,7 @@ mod tests_167 {
 pub struct GF173 {}
 impl PrimeField for GF173 {
     const CHARACTERISTIC : u8 = 173;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   87,   58,  130,  104,   29,   99,   65,   77,   52,   63,  101,   40,  136,  150,
          119,  112,  125,   82,   26,   33,  118,  158,  137,   90,   20,  141,   68,    6,   75,   67,
@@ -2527,6 +2567,7 @@ mod tests_173 {
 pub struct GF179 {}
 impl PrimeField for GF179 {
     const CHARACTERISTIC : u8 = 179;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   90,   60,   45,   36,   30,  128,  112,   20,   18,  114,   15,  124,   64,   12,
           56,  158,   10,   66,    9,  162,   57,  109,   97,   43,   62,  126,   32,  142,    6,   52,
@@ -2590,6 +2631,7 @@ mod tests_179 {
 pub struct GF181 {}
 impl PrimeField for GF181 {
     const CHARACTERISTIC : u8 = 181;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   91,  121,  136,  145,  151,   26,   68,  161,  163,   33,  166,   14,   13,  169,
           34,   32,  171,  162,  172,   69,  107,   63,   83,   29,    7,  114,   97,   25,  175,  146,
@@ -2653,6 +2695,7 @@ mod tests_181 {
 pub struct GF191 {}
 impl PrimeField for GF191 {
     const CHARACTERISTIC : u8 = 191;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   96,   64,   48,  153,   32,   82,   24,   85,  172,  139,   16,  147,   41,   51,
           12,   45,  138,  181,   86,   91,  165,  108,    8,  107,  169,   92,  116,  112,  121,   37,
@@ -2716,6 +2759,7 @@ mod tests_191 {
 pub struct GF193 {}
 impl PrimeField for GF193 {
     const CHARACTERISTIC : u8 = 193;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   97,  129,  145,  116,  161,  138,  169,   43,   58,  158,  177,  104,   69,  103,
          181,  159,  118,   61,   29,   46,   79,   42,  185,  139,   52,  143,  131,   20,  148,  137,
@@ -2779,6 +2823,7 @@ mod tests_193 {
 pub struct GF197 {}
 impl PrimeField for GF197 {
     const CHARACTERISTIC : u8 = 197;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,   99,   66,  148,   79,   33,  169,   74,   22,  138,   18,  115,   91,  183,   92,
           37,   58,   11,   83,   69,  122,    9,   60,  156,  134,  144,   73,  190,   34,   46,   89,
@@ -2842,6 +2887,7 @@ mod tests_197 {
 pub struct GF199 {}
 impl PrimeField for GF199 {
     const CHARACTERISTIC : u8 = 199;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  100,  133,   50,   40,  166,   57,   25,  177,   20,  181,   83,   46,  128,  146,
          112,   82,  188,   21,   10,   19,  190,   26,  141,    8,   23,   59,   64,  151,   73,  122,
@@ -2905,6 +2951,7 @@ mod tests_199 {
 pub struct GF211 {}
 impl PrimeField for GF211 {
     const CHARACTERISTIC : u8 = 211;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  106,  141,   53,  169,  176,  181,  132,   47,  190,   96,   88,   65,  196,  197,
           66,  149,  129,  100,   95,  201,   48,  156,   44,   76,  138,   86,   98,  131,  204,  177,
@@ -2968,6 +3015,7 @@ mod tests_211 {
 pub struct GF223 {}
 impl PrimeField for GF223 {
     const CHARACTERISTIC : u8 = 223;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  112,  149,   56,  134,  186,   32,   28,  124,   67,  142,   93,  103,   16,  119,
           14,  105,   62,   47,  145,   85,   71,   97,  158,  116,  163,  190,    8,  100,  171,   36,
@@ -3031,6 +3079,7 @@ mod tests_223 {
 pub struct GF227 {}
 impl PrimeField for GF227 {
     const CHARACTERISTIC : u8 = 227;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  114,   76,   57,   91,   38,   65,  142,  101,  159,   62,   19,   35,  146,  106,
           71,  187,  164,   12,  193,  173,   31,   79,  123,  109,  131,  185,   73,   47,   53,   22,
@@ -3094,6 +3143,7 @@ mod tests_227 {
 pub struct GF229 {}
 impl PrimeField for GF229 {
     const CHARACTERISTIC : u8 = 229;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  115,  153,  172,   46,  191,  131,   86,   51,   23,  125,  210,  141,  180,  168,
           43,   27,  140,  217,  126,  120,  177,   10,  105,   55,  185,   17,   90,   79,   84,  133,
@@ -3157,6 +3207,7 @@ mod tests_229 {
 pub struct GF233 {}
 impl PrimeField for GF233 {
     const CHARACTERISTIC : u8 = 233;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  117,   78,  175,  140,   39,  100,  204,   26,   70,  106,  136,   18,   50,  202,
          102,   96,   13,  184,   35,  111,   53,  152,   68,   28,    9,  164,   25,  225,  101,  218,
@@ -3220,6 +3271,7 @@ mod tests_233 {
 pub struct GF239 {}
 impl PrimeField for GF239 {
     const CHARACTERISTIC : u8 = 239;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  120,   80,   60,   48,   40,  205,   30,  186,   24,   87,   20,   92,  222,   16,
           15,  225,   93,  151,   12,  148,  163,   52,   10,  153,   46,   62,  111,   33,    8,   54,
@@ -3283,6 +3335,7 @@ mod tests_239 {
 pub struct GF241 {}
 impl PrimeField for GF241 {
     const CHARACTERISTIC : u8 = 241;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  121,  161,  181,  193,  201,   69,  211,  134,  217,   22,  221,  204,  155,  225,
          226,  156,   67,  203,  229,   23,   11,   21,  231,  135,  102,  125,  198,  133,  233,   70,
@@ -3346,6 +3399,7 @@ mod tests_241 {
 pub struct GF251 {}
 impl PrimeField for GF251 {
     const CHARACTERISTIC : u8 = 251;
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [
            0,    1,  126,   84,   63,  201,   42,   36,  157,   28,  226,  137,   21,   58,   18,   67,
          204,  192,   14,  185,  113,   12,  194,  131,  136,  241,   29,   93,    9,   26,  159,   81,

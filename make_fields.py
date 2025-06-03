@@ -12,6 +12,7 @@ def make_field(p):
 pub struct GF{p} {{}}
 impl PrimeField for GF{p} {{
     const CHARACTERISTIC : u8 = {p};
+    #[rustfmt::skip]
     const DIVISION_TABLE : [u8; 256] = [""")
     inv = [0 for _ in range(256)]
     for i in range(1,p):
