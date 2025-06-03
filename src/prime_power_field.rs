@@ -67,8 +67,8 @@ pub struct PrimePowerFieldElt<F: PrimePowerField> {
 }
 
 impl<F: PrimePowerField> From<u8> for PrimePowerFieldElt<F> {
-    fn from(x: u8) -> PrimePowerFieldElt<F> {
-        PrimePowerFieldElt {
+    fn from(x: u8) -> Self {
+        Self {
             val: [
                 PrimeFieldElt::from(x),
                 F::FieldOfIntegers::zero,
@@ -81,10 +81,10 @@ impl<F: PrimePowerField> From<u8> for PrimePowerFieldElt<F> {
 }
 
 impl<F: PrimePowerField> ops::Add for PrimePowerFieldElt<F> {
-    type Output = PrimePowerFieldElt<F>;
+    type Output = Self;
 
-    fn add(self, rhs: PrimePowerFieldElt<F>) -> PrimePowerFieldElt<F> {
-        PrimePowerFieldElt {
+    fn add(self, rhs: Self) -> Self {
+        Self {
             val: [
                 self.val[0] + rhs.val[0],
                 self.val[1] + rhs.val[1],
@@ -97,10 +97,10 @@ impl<F: PrimePowerField> ops::Add for PrimePowerFieldElt<F> {
 }
 
 impl<F: PrimePowerField> ops::Neg for PrimePowerFieldElt<F> {
-    type Output = PrimePowerFieldElt<F>;
+    type Output = Self;
 
-    fn neg(self) -> PrimePowerFieldElt<F> {
-        PrimePowerFieldElt {
+    fn neg(self) -> Self {
+        Self {
             val: [-self.val[0], -self.val[1], -self.val[2], -self.val[3]],
             phantom: marker::PhantomData,
         }
@@ -108,15 +108,15 @@ impl<F: PrimePowerField> ops::Neg for PrimePowerFieldElt<F> {
 }
 
 impl<F: PrimePowerField> ops::Sub for PrimePowerFieldElt<F> {
-    type Output = PrimePowerFieldElt<F>;
+    type Output = Self;
 
-    fn sub(self, rhs: PrimePowerFieldElt<F>) -> PrimePowerFieldElt<F> {
+    fn sub(self, rhs: Self) -> Self {
         self + (-rhs)
     }
 }
 
 impl<F: PrimePowerField> ops::Mul for PrimePowerFieldElt<F> {
-    type Output = PrimePowerFieldElt<F>;
+    type Output = Self;
 
     fn mul(self, rhs: PrimePowerFieldElt<F>) -> PrimePowerFieldElt<F> {
         &self * &rhs
@@ -150,20 +150,18 @@ impl<F: PrimePowerField> ops::Mul for &PrimePowerFieldElt<F> {
 }
 
 impl<F: PrimePowerField> ops::Div for PrimePowerFieldElt<F> {
-    type Output = PrimePowerFieldElt<F>;
+    type Output = Self;
 
-    fn div(self, rhs: PrimePowerFieldElt<F>) -> PrimePowerFieldElt<F> {
+    fn div(self, rhs: Self) -> Self {
         assert_ne!(rhs, F::zero, "Division by zero");
         // TODO(robert) write this properly
-        self * F::elts()
-            .filter(|x| *x * rhs == F::one)
-            .next()
+        self * F::elts().find(|x| *x * rhs == F::one)
             .expect("Could not find inverse")
     }
 }
 
 impl<F: PrimePowerField> PrimePowerFieldElt<F> {
-    pub fn pow(self, rhs: u32) -> PrimePowerFieldElt<F> {
+    pub fn pow(self, rhs: u32) -> Self {
         // let rhs = rhs % (F::FieldOfIntegers::CHARACTERISTIC.pow(F::DEGREE as u32 - 1) - 1);
         if rhs == 0 {
             F::one

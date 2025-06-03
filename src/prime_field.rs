@@ -67,10 +67,10 @@ impl<F: PrimeField> fmt::Debug for PrimeFieldElt<F> {
 }
 
 impl<F: PrimeField> ops::Add for PrimeFieldElt<F> {
-    type Output = PrimeFieldElt<F>;
+    type Output = Self;
 
-    fn add(self, rhs: PrimeFieldElt<F>) -> PrimeFieldElt<F> {
-        PrimeFieldElt {
+    fn add(self, rhs: Self) -> Self {
+        Self {
             val: (((self.val as u16) + (rhs.val as u16)) % (F::CHARACTERISTIC as u16)) as u8,
             phantom: marker::PhantomData,
         }
@@ -78,10 +78,10 @@ impl<F: PrimeField> ops::Add for PrimeFieldElt<F> {
 }
 
 impl<F: PrimeField> ops::Neg for PrimeFieldElt<F> {
-    type Output = PrimeFieldElt<F>;
+    type Output = Self;
 
-    fn neg(self) -> PrimeFieldElt<F> {
-        PrimeFieldElt {
+    fn neg(self) -> Self {
+        Self {
             val: (F::CHARACTERISTIC - self.val) % F::CHARACTERISTIC,
             phantom: marker::PhantomData,
         }
@@ -89,15 +89,15 @@ impl<F: PrimeField> ops::Neg for PrimeFieldElt<F> {
 }
 
 impl<F: PrimeField> ops::Sub for PrimeFieldElt<F> {
-    type Output = PrimeFieldElt<F>;
+    type Output = Self;
 
-    fn sub(self, rhs: PrimeFieldElt<F>) -> PrimeFieldElt<F> {
+    fn sub(self, rhs: Self) -> Self {
         self + (-rhs)
     }
 }
 
 impl<F: PrimeField> ops::Mul for PrimeFieldElt<F> {
-    type Output = PrimeFieldElt<F>;
+    type Output = Self;
 
     fn mul(self, rhs: PrimeFieldElt<F>) -> PrimeFieldElt<F> {
         &self * &rhs
@@ -116,11 +116,11 @@ impl<F: PrimeField> ops::Mul for &PrimeFieldElt<F> {
 }
 
 impl<F: PrimeField> ops::Div for PrimeFieldElt<F> {
-    type Output = PrimeFieldElt<F>;
+    type Output = Self;
 
-    fn div(self, rhs: PrimeFieldElt<F>) -> PrimeFieldElt<F> {
+    fn div(self, rhs: Self) -> Self {
         assert_ne!(rhs, F::zero, "Division by zero");
-        self * PrimeFieldElt {
+        self * Self {
             val: F::DIVISION_TABLE[rhs.val as usize],
             phantom: marker::PhantomData,
         }
@@ -128,7 +128,7 @@ impl<F: PrimeField> ops::Div for PrimeFieldElt<F> {
 }
 
 impl<F: PrimeField> PrimeFieldElt<F> {
-    pub fn pow(self, rhs: u8) -> PrimeFieldElt<F> {
+    pub fn pow(self, rhs: u8) -> Self {
         let rhs = rhs % (F::CHARACTERISTIC - 1);
         if rhs == 0 {
             F::one
@@ -147,8 +147,8 @@ impl<F: PrimeField> cmp::PartialEq for PrimeFieldElt<F> {
 impl<F: PrimeField> cmp::Eq for PrimeFieldElt<F> {}
 
 impl<F: PrimeField> convert::From<u8> for PrimeFieldElt<F> {
-    fn from(x: u8) -> PrimeFieldElt<F> {
-        PrimeFieldElt {
+    fn from(x: u8) -> Self {
+        Self {
             val: x % F::CHARACTERISTIC,
             phantom: marker::PhantomData,
         }
@@ -156,7 +156,7 @@ impl<F: PrimeField> convert::From<u8> for PrimeFieldElt<F> {
 }
 
 impl<F: PrimeField> convert::From<PrimeFieldElt<F>> for u8 {
-    fn from(x: PrimeFieldElt<F>) -> u8 {
+    fn from(x: PrimeFieldElt<F>) -> Self {
         x.val
     }
 }
