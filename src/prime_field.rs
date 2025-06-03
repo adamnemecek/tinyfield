@@ -23,16 +23,10 @@ pub trait PrimeField: marker::Sized + core::fmt::Debug + marker::Copy {
     const DIVISION_TABLE: [u8; 256];
 
     /// The zero element of the field.
-    const zero: PrimeFieldElt<Self> = PrimeFieldElt {
-        val: 0,
-        phantom: marker::PhantomData,
-    };
+    const zero: PrimeFieldElt<Self> = PrimeFieldElt::new(0);
 
     /// The multiplicative unit of the field.
-    const one: PrimeFieldElt<Self> = PrimeFieldElt {
-        val: 1,
-        phantom: marker::PhantomData,
-    };
+    const one: PrimeFieldElt<Self> = PrimeFieldElt::new(1);
 
     /// An iterator over the p elements of this field.
     ///
@@ -60,6 +54,16 @@ pub struct PrimeFieldElt<F: PrimeField> {
     phantom: marker::PhantomData<F>,
 }
 
+impl<F: PrimeField> PrimeFieldElt<F> {
+    #[inline]
+    pub const fn new(val: u8) -> Self {
+        Self {
+            val,
+            phantom: marker::PhantomData,
+        }
+    }
+}
+
 impl<F: PrimeField> fmt::Debug for PrimeFieldElt<F> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.write_fmt(format_args!("F{}({})", F::CHARACTERISTIC, self.val))
@@ -70,10 +74,7 @@ impl<F: PrimeField> ops::Add for PrimeFieldElt<F> {
     type Output = Self;
 
     fn add(self, rhs: Self) -> Self {
-        Self {
-            val: (((self.val as u16) + (rhs.val as u16)) % (F::CHARACTERISTIC as u16)) as u8,
-            phantom: marker::PhantomData,
-        }
+        Self::new((((self.val as u16) + (rhs.val as u16)) % (F::CHARACTERISTIC as u16)) as u8)
     }
 }
 
@@ -81,10 +82,7 @@ impl<F: PrimeField> ops::Neg for PrimeFieldElt<F> {
     type Output = Self;
 
     fn neg(self) -> Self {
-        Self {
-            val: (F::CHARACTERISTIC - self.val) % F::CHARACTERISTIC,
-            phantom: marker::PhantomData,
-        }
+        Self::new((F::CHARACTERISTIC - self.val) % F::CHARACTERISTIC)
     }
 }
 
@@ -107,11 +105,10 @@ impl<F: PrimeField> ops::Mul for PrimeFieldElt<F> {
 impl<F: PrimeField> ops::Mul for &PrimeFieldElt<F> {
     type Output = PrimeFieldElt<F>;
 
-    fn mul(self, rhs: &PrimeFieldElt<F>) -> PrimeFieldElt<F> {
-        PrimeFieldElt {
-            val: (((self.val as u16) * (rhs.val as u16)) % (F::CHARACTERISTIC as u16)) as u8,
-            phantom: marker::PhantomData,
-        }
+    fn mul(self, rhs: Self) -> Self::Output {
+        Self::Output::new(
+            (((self.val as u16) * (rhs.val as u16)) % (F::CHARACTERISTIC as u16)) as u8,
+        )
     }
 }
 
@@ -120,10 +117,7 @@ impl<F: PrimeField> ops::Div for PrimeFieldElt<F> {
 
     fn div(self, rhs: Self) -> Self {
         assert_ne!(rhs, F::zero, "Division by zero");
-        self * Self {
-            val: F::DIVISION_TABLE[rhs.val as usize],
-            phantom: marker::PhantomData,
-        }
+        self * Self::new(F::DIVISION_TABLE[rhs.val as usize])
     }
 }
 
